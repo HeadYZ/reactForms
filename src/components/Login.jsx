@@ -1,19 +1,27 @@
 import { useState } from 'react'
 
 export default function Login() {
-	const [enteredEmail, setEnteredEmail] = useState('')
-	const [enteredPassword, setEnteredPassword] = useState('')
+	// const [enteredEmail, setEnteredEmail] = useState('')
+	// const [enteredPassword, setEnteredPassword] = useState('')
 
+	const [enteredValues, setEnteredValues] = useState({ email: '', password: '' })
 	function handleSubmit(e) {
 		e.preventDefault()
 	}
 
-	function handleEmailChange(e) {
-		setEnteredEmail(e.target.value)
+	function handleInputChange(identifer, value) {
+		setEnteredValues(prevValues => ({
+			...prevValues,
+			[identifer]: value,
+		}))
 	}
-	function handlePasswordChange(e) {
-		setEnteredPassword(e.target.value)
-	}
+
+	// function handleEmailChange(e) {
+	// 	setEnteredEmail(e.target.value)
+	// }
+	// function handlePasswordChange(e) {
+	// 	setEnteredPassword(e.target.value)
+	// }
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -22,7 +30,13 @@ export default function Login() {
 			<div className='control-row'>
 				<div className='control no-margin'>
 					<label htmlFor='email'>Email</label>
-					<input id='email' type='email' name='email' onChange={handleEmailChange} value={enteredEmail} />
+					<input
+						id='email'
+						type='email'
+						name='email'
+						onChange={e => handleInputChange('email', e.target.value)}
+						value={enteredValues.email}
+					/>
 				</div>
 
 				<div className='control no-margin'>
@@ -31,8 +45,8 @@ export default function Login() {
 						id='password'
 						type='password'
 						name='password'
-						onChange={handlePasswordChange}
-						value={enteredPassword}
+						onChange={e => handleInputChange('password', e.target.value)}
+						value={enteredValues.password}
 					/>
 				</div>
 			</div>
