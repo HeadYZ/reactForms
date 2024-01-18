@@ -12,6 +12,7 @@ export default function Login() {
 
 	function handleSubmit(e) {
 		e.preventDefault()
+		if (emailIsInvalid || passwordIsInvalid) return
 	}
 
 	function handleInputChange(identifier, value) {
