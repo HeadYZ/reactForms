@@ -46,7 +46,6 @@ export default function Login() {
 			<h2>Login</h2>
 
 			<div className='control-row'>
-				{/* Please enter a valid email adress. */}
 				<Input
 					label='Email'
 					id='email'
@@ -55,8 +54,8 @@ export default function Login() {
 					onChange={e => handleInputChange('email', e.target.value)}
 					onBlur={() => handleInputBlur('email')}
 					value={enteredValues.email}
+					error={emailIsInvalid && 'Please enter a valid email adress.'}
 				/>
-				{/* Password must be longer than 6 characters. */}
 
 				<Input
 					id='password'
@@ -66,6 +65,7 @@ export default function Login() {
 					onChange={e => handleInputChange('password', e.target.value)}
 					onBlur={() => handleInputBlur('password')}
 					value={enteredValues.password}
+					error={passwordIsInvalid && 'Password must be longer than 6 characters.'}
 				/>
 			</div>
 
