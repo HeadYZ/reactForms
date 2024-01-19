@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Input from './Input.jsx'
 
 export default function Login() {
 	// const [enteredEmail, setEnteredEmail] = useState('')
@@ -45,31 +46,27 @@ export default function Login() {
 			<h2>Login</h2>
 
 			<div className='control-row'>
-				<div className='control no-margin'>
-					<label htmlFor='email'>Email</label>
-					<input
-						id='email'
-						type='email'
-						name='email'
-						onChange={e => handleInputChange('email', e.target.value)}
-						onBlur={() => handleInputBlur('email')}
-						value={enteredValues.email}
-					/>
-					<div className='control-error'>{emailIsInvalid && <p>Please enter a valid email adress.</p>}</div>
-				</div>
+				{/* Please enter a valid email adress. */}
+				<Input
+					label='Email'
+					id='email'
+					type='email'
+					name='email'
+					onChange={e => handleInputChange('email', e.target.value)}
+					onBlur={() => handleInputBlur('email')}
+					value={enteredValues.email}
+				/>
+				{/* Password must be longer than 6 characters. */}
 
-				<div className='control no-margin'>
-					<label htmlFor='password'>Password</label>
-					<input
-						id='password'
-						type='password'
-						name='password'
-						onChange={e => handleInputChange('password', e.target.value)}
-						onBlur={() => handleInputBlur('password')}
-						value={enteredValues.password}
-					/>
-					<div className='control-error'>{passwordIsInvalid && <p>Password must be longer than 6 characters.</p>}</div>
-				</div>
+				<Input
+					id='password'
+					type='password'
+					label='Password'
+					name='password'
+					onChange={e => handleInputChange('password', e.target.value)}
+					onBlur={() => handleInputBlur('password')}
+					value={enteredValues.password}
+				/>
 			</div>
 
 			<p className='form-actions'>
